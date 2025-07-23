@@ -121,7 +121,7 @@
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-3);
   margin-top: var(--space-4);
 }
@@ -259,13 +259,13 @@
   .about-section, .about-section.reverse {
     grid-template-columns: 1fr;
     direction: ltr;
-    gap: var(--space-4);
+    gap: var(--space-3);
   }
-  
+
   .about-header h1 {
     font-size: 2.5rem;
   }
-  
+
   .about-content h2, .team-section h2, .values-section h2 {
     font-size: 1.75rem;
   }
@@ -275,11 +275,11 @@
   .team-grid, .values-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .about-header {
     padding: var(--space-6) 0;
   }
-  
+
   .about-header h1 {
     font-size: 2rem;
   }

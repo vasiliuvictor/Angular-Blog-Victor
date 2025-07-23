@@ -3,10 +3,10 @@
     <div class="header-content">
       <div class="logo">
         <a routerLink="/">
-          <h1>Prism</h1>
+          <h1>One Tip A Day</h1>
         </a>
       </div>
-      
+
       <div class="desktop-nav">
         <nav>
           <ul>
@@ -18,14 +18,14 @@
         </nav>
         <app-search-bar></app-search-bar>
       </div>
-      
+
       <button class="mobile-menu-button" (click)="toggleMobileMenu()" aria-label="Toggle menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
     </div>
-    
+
     <div class="mobile-nav" *ngIf="isMobileMenuOpen" [ngClass]="[isMobileMenuOpen ? 'open' : '']">
       <nav>
         <ul>

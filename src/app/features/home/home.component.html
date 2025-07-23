@@ -3,8 +3,9 @@
       <section class="hero">
         <div class="container">
           <div class="hero-content fade-in">
-            <h1>Welcome to Prism Blog</h1>
-            <p class="hero-subtitle">Thoughtful insights and stories for curious minds</p>
+            <h1>Welcome to OTAD Blog</h1>
+            <p class="hero-subtitle">One tip a day keeps the bugs away</p>
+            <p class="span-subtitle"> And a happy life as well</p>
             <div class="hero-buttons">
               <a routerLink="/blog" class="btn btn-primary">Explore All Posts</a>
               <a routerLink="/about" class="btn btn-secondary">About Us</a>
@@ -12,7 +13,7 @@
           </div>
         </div>
       </section>
-      
+
       <!-- Featured Posts -->
       <section class="featured-posts">
         <div class="container">
@@ -22,14 +23,14 @@
           </div>
         </div>
       </section>
-      
+
       <!-- Recent Posts -->
       <section class="recent-posts">
         <div class="container">
           <h2 class="section-title">Recent Posts</h2>
           <div class="posts-grid">
-            <app-post-card 
-              *ngFor="let post of recentPosts" 
+            <app-post-card
+              *ngFor="let post of recentPosts"
               [post]="post"
               class="slide-up"
             ></app-post-card>
@@ -45,7 +46,7 @@
           </div>
         </div>
       </section>
-      
+
       <!-- Categories -->
       <section class="categories">
         <div class="container">
@@ -70,7 +71,7 @@
           </div>
         </div>
       </section>
-      
+
       <!-- Newsletter -->
       <section class="newsletter-section">
         <div class="container">

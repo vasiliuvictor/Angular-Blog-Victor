@@ -12,5 +12,5 @@ import { FooterComponent } from './core/components/footer/footer.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Prism Blog';
+  title = 'OTAD Blog';
 }
