@@ -1,0 +1,86 @@
+    <div class="home-container">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content fade-in">
+            <h1>Welcome to Prism Blog</h1>
+            <p class="hero-subtitle">Thoughtful insights and stories for curious minds</p>
+            <div class="hero-buttons">
+              <a routerLink="/blog" class="btn btn-primary">Explore All Posts</a>
+              <a routerLink="/about" class="btn btn-secondary">About Us</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Featured Posts -->
+      <section class="featured-posts">
+        <div class="container">
+          <h2 class="section-title">Featured Posts</h2>
+          <div class="featured-post-container" *ngIf="featuredPost">
+            <app-featured-post [post]="featuredPost"></app-featured-post>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Recent Posts -->
+      <section class="recent-posts">
+        <div class="container">
+          <h2 class="section-title">Recent Posts</h2>
+          <div class="posts-grid">
+            <app-post-card 
+              *ngFor="let post of recentPosts" 
+              [post]="post"
+              class="slide-up"
+            ></app-post-card>
+          </div>
+          <div class="view-all-container">
+            <a routerLink="/blog" class="view-all-link">
+              View All Posts
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Categories -->
+      <section class="categories">
+        <div class="container">
+          <h2 class="section-title">Browse by Category</h2>
+          <div class="categories-grid">
+            <a routerLink="/blog/category/technology" class="category-card">
+              <h3>Technology</h3>
+              <p>Latest in tech innovations and digital trends</p>
+            </a>
+            <a routerLink="/blog/category/design" class="category-card">
+              <h3>Design</h3>
+              <p>Insights on UX/UI and creative processes</p>
+            </a>
+            <a routerLink="/blog/category/lifestyle" class="category-card">
+              <h3>Lifestyle</h3>
+              <p>Wellness, travel, and personal growth</p>
+            </a>
+            <a routerLink="/blog/category/productivity" class="category-card">
+              <h3>Productivity</h3>
+              <p>Work smarter and optimize your time</p>
+            </a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Newsletter -->
+      <section class="newsletter-section">
+        <div class="container">
+          <div class="newsletter-container">
+            <div class="newsletter-content">
+              <h2>Stay in the Loop</h2>
+              <p>Subscribe to our newsletter for the latest posts and updates.</p>
+            </div>
+            <app-newsletter-form></app-newsletter-form>
+          </div>
+        </div>
+      </section>
+    </div>

@@ -1,0 +1,41 @@
+<header class="header" [class.scrolled]="isScrolled">
+  <div class="container">
+    <div class="header-content">
+      <div class="logo">
+        <a routerLink="/">
+          <h1>Prism</h1>
+        </a>
+      </div>
+      
+      <div class="desktop-nav">
+        <nav>
+          <ul>
+            <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+            <li><a routerLink="/blog" routerLinkActive="active">Blog</a></li>
+            <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+            <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+          </ul>
+        </nav>
+        <app-search-bar></app-search-bar>
+      </div>
+      
+      <button class="mobile-menu-button" (click)="toggleMobileMenu()" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    
+    <div class="mobile-nav" *ngIf="isMobileMenuOpen" [ngClass]="[isMobileMenuOpen ? 'open' : '']">
+      <nav>
+        <ul>
+          <li><a routerLink="/" (click)="closeMobileMenu()">Home</a></li>
+          <li><a routerLink="/blog" (click)="closeMobileMenu()">Blog</a></li>
+          <li><a routerLink="/about" (click)="closeMobileMenu()">About</a></li>
+          <li><a routerLink="/contact" (click)="closeMobileMenu()">Contact</a></li>
+        </ul>
+      </nav>
+      <app-search-bar (search)="onSearch($event)"></app-search-bar>
+    </div>
+  </div>
+</header>

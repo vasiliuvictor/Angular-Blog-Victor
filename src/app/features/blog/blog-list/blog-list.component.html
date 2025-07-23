@@ -1,0 +1,89 @@
+<div class="blog-list-container">
+      <div class="container">
+        <div class="blog-header">
+          <h1>
+            {{ categoryTitle || 'Blog Posts' }}
+            <span *ngIf="searchTerm" class="search-results-text">
+              Search results for: "{{ searchTerm }}"
+            </span>
+          </h1>
+          <p *ngIf="!searchTerm" class="blog-description">
+            {{ categoryDescription || 'Explore our collection of articles and insights.' }}
+          </p>
+        </div>
+        
+        <div class="blog-content">
+          <aside class="blog-sidebar">
+            <div class="sidebar-section">
+              <h3>Categories</h3>
+              <app-category-filter 
+                [categories]="categories" 
+                [selectedCategory]="selectedCategory"
+                (categorySelected)="onCategorySelected($event)"
+              ></app-category-filter>
+            </div>
+            
+            <div class="sidebar-section">
+              <h3>Sort By</h3>
+              <div class="sort-options">
+                <select [(ngModel)]="sortOption" (change)="onSortChange()">
+                  <option value="latest">Latest</option>
+                  <option value="oldest">Oldest</option>
+                  <option value="title-asc">Title (A-Z)</option>
+                  <option value="title-desc">Title (Z-A)</option>
+                </select>
+              </div>
+            </div>
+          </aside>
+          
+          <div class="blog-main">
+            <div class="posts-grid" *ngIf="posts.length > 0">
+              <app-post-card 
+                *ngFor="let post of posts" 
+                [post]="post" 
+                class="slide-up"
+              ></app-post-card>
+            </div>
+            
+            <div class="no-posts" *ngIf="posts.length === 0">
+              <h3>No posts found</h3>
+              <p *ngIf="searchTerm">
+                No posts matching "{{ searchTerm }}". Try a different search term.
+              </p>
+              <p *ngIf="selectedCategory && !searchTerm">
+                No posts found in this category.
+              </p>
+              <button class="btn btn-primary" (click)="resetFilters()">
+                View All Posts
+              </button>
+            </div>
+            
+            <div class="pagination" *ngIf="totalPages > 1">
+              <button 
+                class="pagination-btn" 
+                [disabled]="currentPage === 1"
+                (click)="onPageChange(currentPage - 1)"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 18l-6-6 6-6"/>
+                </svg>
+              </button>
+              
+              <span class="pagination-info">
+                Page {{ currentPage }} of {{ totalPages }}
+              </span>
+              
+              <button 
+                class="pagination-btn" 
+                [disabled]="currentPage === totalPages"
+                (click)="onPageChange(currentPage + 1)"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

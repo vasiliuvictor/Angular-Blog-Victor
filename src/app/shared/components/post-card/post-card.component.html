@@ -1,0 +1,33 @@
+    <div class="post-card">
+      <div class="post-image">
+        <a [routerLink]="['/blog', post.slug]">
+          <img [src]="post.imageUrl" [alt]="post.title">
+        </a>
+        <a [routerLink]="['/blog/category', post.category]" class="post-category">
+          {{ post.category }}
+        </a>
+      </div>
+      <div class="post-content">
+        <div class="post-meta">
+          <span class="post-date">{{ post.publishedAt | date: 'mediumDate' }}</span>
+          <span class="post-read-time">{{ post.readTime }} min read</span>
+        </div>
+        <h3 class="post-title">
+          <a [routerLink]="['/blog', post.slug]">{{ post.title }}</a>
+        </h3>
+        <p class="post-excerpt">{{ post.excerpt }}</p>
+        <div class="post-footer">
+          <div class="post-author">
+            <img [src]="post.author.avatar" [alt]="post.author.name" class="author-avatar">
+            <span class="author-name">{{ post.author.name }}</span>
+          </div>
+          <a [routerLink]="['/blog', post.slug]" class="read-more">
+            Read More
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,96 @@
+<div class="blog-detail-container" *ngIf="post">
+      <div class="post-header">
+        <div class="container">
+          <div class="post-meta">
+            <a [routerLink]="['/blog/category', post.category]" class="post-category">
+              {{ post.category }}
+            </a>
+            <span class="post-date">{{ post.publishedAt | date:'mediumDate' }}</span>
+          </div>
+          <h1 class="post-title">{{ post.title }}</h1>
+          <div class="post-author">
+            <img [src]="post.author.avatar" [alt]="post.author.name" class="author-avatar">
+            <div class="author-info">
+              <span class="author-name">{{ post.author.name }}</span>
+              <span class="author-title">{{ post.author.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="container">
+        <div class="post-content-wrapper">
+          <div class="post-featured-image">
+            <img [src]="post.imageUrl" [alt]="post.title" class="featured-image">
+          </div>
+          
+          <article class="post-content">
+            <div [innerHTML]="post.content"></div>
+            
+            <div class="post-tags" *ngIf="post.tags && post.tags.length > 0">
+              <h3>Tags:</h3>
+              <div class="tags-list">
+                <a 
+                  *ngFor="let tag of post.tags" 
+                  [routerLink]="['/blog']" 
+                  [queryParams]="{tag: tag}"
+                  class="tag"
+                >
+                  {{ tag }}
+                </a>
+              </div>
+            </div>
+            
+            <div class="post-share">
+              <h3>Share this post:</h3>
+              <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet" target="_blank" class="share-button twitter">
+                  Twitter
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php" target="_blank" class="share-button facebook">
+                  Facebook
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/" target="_blank" class="share-button linkedin">
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+            
+            <div class="author-bio" *ngIf="post.author.bio">
+              <h3>About the Author</h3>
+              <div class="author-card">
+                <img [src]="post.author.avatar" [alt]="post.author.name" class="author-avatar">
+                <div class="author-details">
+                  <h4>{{ post.author.name }}</h4>
+                  <p class="author-title">{{ post.author.title }}</p>
+                  <p class="bio-text">{{ post.author.bio }}</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        
+        <div class="related-posts" *ngIf="relatedPosts.length > 0">
+          <h2>Related Posts</h2>
+          <div class="related-posts-grid">
+            <app-post-card
+              *ngFor="let relatedPost of relatedPosts"
+              [post]="relatedPost"
+            ></app-post-card>
+          </div>
+        </div>
+        
+        <div class="newsletter-container">
+          <div class="newsletter-content">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Get notified about new articles and insights.</p>
+          </div>
+          <app-newsletter-form></app-newsletter-form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="loading-container" *ngIf="!post">
+      <div class="loading-spinner"></div>
+      <p>Loading article...</p>
+    </div>
